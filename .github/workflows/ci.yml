@@ -2,8 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ development ]
   pull_request:
+    branches: [ development ]
 
 jobs:
   run-tests:
@@ -56,5 +57,5 @@ jobs:
     steps:
       - name: deploy the artifacts
         uses: actions/deploy-pages@v4
-    
-    
+
+
