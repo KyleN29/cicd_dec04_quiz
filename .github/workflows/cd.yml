@@ -1,4 +1,4 @@
-name: CI
+name: CD
 
 on:
   push:
@@ -6,13 +6,18 @@ on:
 
 jobs:
   Deploy:
-    needs: run-tests
     runs-on: ubuntu-latest
     permissions:
       pages: write
       id-token: write
+
     steps:
-      - name: deploy the artifacts
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+
+      - name: deploy the artifcats
         uses: actions/deploy-pages@v4
 
 
