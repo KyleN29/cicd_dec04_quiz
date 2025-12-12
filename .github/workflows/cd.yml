@@ -48,6 +48,3 @@ jobs:
 
       - name: deploy the artifcats
         uses: actions/deploy-pages@v4
-
-
-
