@@ -15,10 +15,24 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v4
 
+      - name: set up python
+        uses: actions/setup-python@v5
+        with:
+           python-version: "3.10"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: run tests with coverage
+        run: |
+          pytest -q \
+            --cov=. \
+            --cov-report=html
+
       - name: upload the artifacts
         uses: actions/upload-pages-artifact@v4
         with:
-          path: .
+          path: htmlcov
 
       - name: deploy the artifcats
         uses: actions/deploy-pages@v4
